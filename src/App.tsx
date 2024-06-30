@@ -1,16 +1,13 @@
-import { Navigate, Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
+import NoteList from "./pages/NoteList"
+import NewNote from "./pages/NewNote"
 
 function App() {
   return (
-    <div className="my-4">
+    <div className="m-4 max-w-5xl mx-auto p-5">
       <Routes>
-        <Route path="/" element={<h1 className="text-2xl">Home</h1>} />
-        <Route path="/new" element={<h1 className="text-2xl">new</h1>} />
-        <Route path="/:id">
-          <Route index element={<h1>Show</h1>} />
-          <Route path="edit" element={<h1>Edit</h1>} />
-        </Route>
-        <Route path="*" element={<Navigate to='/' />} />
+        <Route path="/" element={<NoteList />} />
+        <Route path="/new" element={<NewNote />} />
       </Routes>
     </div>
   )
