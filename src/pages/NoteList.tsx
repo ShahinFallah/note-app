@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom"
 import NoteCart from "../components/NoteCart"
+import { Note } from "../App"
 
-function NoteList() {
+type NoteListProps = {
+    notes: Note[]
+}
+
+function NoteList({ notes }: NoteListProps) {
     return (
         <div className="flex flex-col">
             <div className="flex justify-between items-center text-white border-b border-bg-300 pb-3 mb-3">
@@ -14,9 +19,9 @@ function NoteList() {
                 </div>
             </div>
             <div className="grid grid-cols-2 gap-5">
-                <NoteCart />
-                <NoteCart />
-                <NoteCart />
+                {notes.map(note => (
+                    <NoteCart key={note.id} />
+                ))}
             </div>
         </div>
     )
