@@ -69,7 +69,7 @@ function App() {
   return (
     <div className="m-4 max-w-5xl mx-auto p-5">
       <Routes>
-        <Route path="/" element={<NoteList notes={notesWithTags} />} />
+        <Route path="/" element={<NoteList notes={notesWithTags} availableTags={tags} />} />
         <Route path="/new" element={<NewNote onCreateNote={onCrateNote} onAddTag={addTag} availableTags={tags} />} />
         <Route path="/:id" element={<NoteLayout notes={notesWithTags} />}>
           <Route index element={<Note />} />
