@@ -20,7 +20,11 @@ function NoteList({ notes }: NoteListProps) {
             </div>
             <div className="grid grid-cols-2 gap-5">
                 {notes.map(note => (
-                    <NoteCart key={note.id} />
+                    <NoteCart
+                        key={note.id}
+                        title={note.title}
+                        tags={note.tags}
+                        id={note.id} />
                 ))}
             </div>
         </div>

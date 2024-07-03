@@ -2,16 +2,23 @@ import { FormEvent, useRef, useState } from "react"
 import ReactSelectCreatable from "react-select/creatable"
 import { NoteData, Tag } from "../App"
 import { v4 as uuIdv4 } from 'uuid'
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 type NoteFormProps = {
     onSubmit: (data: NoteData) => void
     onAddTag: (data: Tag) => void
-}
+    availableTags: Tag[]
+} & Partial<NoteData>
 
-export default function NoteForm({ onSubmit, onAddTag }: NoteFormProps) {
+export default function NoteForm({
+    onSubmit,
+    onAddTag,
+    availableTags,
+    title = '',
+    markdown = '',
+    tags = [] }: NoteFormProps) {
     const navigate = useNavigate()
-    const [selectedTags, setSelectedTags] = useState<Tag[]>([])
+    const [selectedTags, setSelectedTags] = useState<Tag[]>(tags)
     const titleRef = useRef<HTMLInputElement>(null)
     const markdownRef = useRef<HTMLTextAreaElement>(null)
 
@@ -36,6 +43,7 @@ export default function NoteForm({ onSubmit, onAddTag }: NoteFormProps) {
                     <input
                         ref={titleRef}
                         required
+                        defaultValue={title}
                         id="title"
                         type="text"
                         className="bg-transparent border border-bg-200 rounded-lg p-1.5 px-4 focus:outline-none text-text-200 focus:border-blue-500 transition"
@@ -91,8 +99,7 @@ export default function NoteForm({ onSubmit, onAddTag }: NoteFormProps) {
                             onAddTag(newValue)
 
                         }}
-                        options={[
-                        ]}
+                        options={availableTags.map(tag => ({ label: tag.label, value: tag.id }))}
                         value={selectedTags.map(tag => ({ label: tag.label, value: tag.id }))}
                         onChange={tags => {
                             setSelectedTags(tags.map(tag => {
@@ -105,6 +112,7 @@ export default function NoteForm({ onSubmit, onAddTag }: NoteFormProps) {
             <div className="flex flex-col gap-1">
                 <label htmlFor="markdown">body</label>
                 <textarea
+                    defaultValue={markdown}
                     ref={markdownRef}
                     required
                     placeholder="Enter your body..."
@@ -113,7 +121,9 @@ export default function NoteForm({ onSubmit, onAddTag }: NoteFormProps) {
             </div>
             <div className="flex justify-end space-x-2 mt-2">
                 <button className="bg-primary-100 rounded-md px-2">Save</button>
-                <button type="button" className="border border-bg-200 px-2 p-0.5 rounded-md">Cancel</button>
+                <Link to='..'>
+                    <button type="button" className="border border-bg-200 px-2 p-0.5 rounded-md">Cancel</button>
+                </Link>
             </div>
         </form>
     )
