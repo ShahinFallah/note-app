@@ -17,7 +17,7 @@ export default function EditTagsModal({ availableTags, onEditTag, onDeleteTag, s
                     <h1 className="text-2xl font-semibold">Edit Tags</h1>
                     <IoCloseOutline onClick={() => setShowTagsModal(false)} cursor='pointer' size='30' />
                 </div>
-                <div className='flex flex-col gap-3'>
+                <div className='flex flex-col gap-3 max-h-96 overflow-x-auto'>
                     {availableTags.map(tag => (
                         <div className="flex items-center">
                             <input

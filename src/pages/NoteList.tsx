@@ -2,9 +2,9 @@ import { Link } from "react-router-dom"
 import NoteCart from "../components/NoteCart"
 import { Note, Tag } from "../App"
 import { useMemo, useState } from "react"
-import ReactSelectCreatable from "react-select/creatable"
 import reactSelectStyle from "../utils/reactSelectStyle"
 import EditTagsModal from "../components/EditTagsModal"
+import ReactSelect from "react-select"
 
 type NoteListProps = {
     notes: Note[]
@@ -55,7 +55,7 @@ function NoteList({ notes, availableTags, onDeleteTag, onEditTag }: NoteListProp
                     </div>
                     <div className="flex flex-col flex-1 gap-1">
                         <label htmlFor="tag" className="text-text-200">tags</label>
-                        <ReactSelectCreatable
+                        <ReactSelect
                             isMulti
                             unstyled
                             id={'tag'}
