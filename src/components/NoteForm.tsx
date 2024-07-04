@@ -48,7 +48,7 @@ export default function NoteForm({
                         id="title"
                         type="text"
                         className="bg-transparent border border-bg-200 rounded-lg p-1.5 px-4 focus:outline-none text-text-200 focus:border-blue-500 transition"
-                        placeholder="Enter your tag..." />
+                        placeholder="Enter your title..." />
                 </div>
                 <div className="flex flex-col flex-1 gap-1">
                     <label htmlFor="tag" className="text-text-200">tags</label>

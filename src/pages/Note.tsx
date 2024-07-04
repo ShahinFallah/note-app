@@ -18,7 +18,9 @@ export default function Note({ onDeleteNote }: NoteProps) {
             <button className="bg-primary-100 p-1 px-2 rounded-md hover:-translate-x-1 transition">Edit</button>
           </Link>
           <button onClick={() => onDeleteNote(note.id)} className="border border-red-900 text-red-100 p-1 px-1.5 rounded-md hover:rounded-md">Delete</button>
-          <button className="border border-bg-300 text-text-200 p-1 px-1.5 rounded-md hover:rounded-md">Back</button>
+          <Link to='..'>
+            <button className="border border-bg-300 text-text-200 p-1 px-1.5 rounded-md hover:rounded-md">Back</button>
+          </Link>
         </div>
       </div>
       <div className="flex justify-between items-center px-3 mt-5">

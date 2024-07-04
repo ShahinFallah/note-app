@@ -48,7 +48,7 @@ function NoteList({ notes, availableTags, onDeleteTag, onEditTag }: NoteListProp
                             id="title"
                             type="text"
                             className="bg-transparent border border-bg-200 rounded-lg p-1.5 px-4 focus:outline-none text-text-200 focus:border-blue-500 transition"
-                            placeholder="Enter your tag..."
+                            placeholder="Enter your title..."
                             value={title}
                             onChange={e => setTitle(e.target.value)}
                         />
