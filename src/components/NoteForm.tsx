@@ -3,6 +3,7 @@ import ReactSelectCreatable from "react-select/creatable"
 import { NoteData, Tag } from "../App"
 import { v4 as uuIdv4 } from 'uuid'
 import { Link, useNavigate } from "react-router-dom"
+import reactSelectStyle from "../utils/reactSelectStyle"
 
 type NoteFormProps = {
     onSubmit: (data: NoteData) => void
@@ -55,44 +56,7 @@ export default function NoteForm({
                         isMulti
                         unstyled
                         id={'tag'}
-                        classNames={{
-                            multiValue: () => {
-                                return 'bg-primary-100 p-0.5 rounded-lg mb-[0.2rem] mr-[0.2rem] p-1'
-                            },
-                            multiValueRemove: () => {
-                                return 'text-text-200 rounded-full hover:text-red-300 ml-0.5'
-                            },
-                            multiValueLabel: () => {
-                                return 'text-text-200 leading-none'
-                            },
-                            control: () => {
-                                return `bg-transparent border border-bg-200 rounded-lg px-3 p-1`
-                            },
-                            input: () => {
-                                return 'text-text-200'
-                            },
-                            menu: () => {
-                                return "bg-bg-300 rounded-md mt-1 overflow-x-auto "
-                            },
-                            option: (state) => {
-                                return `${state.isFocused
-                                    ? 'bg-bg-200'
-                                    : 'active:bg-bg-200 '} 
-                               !cursor-pointer p-2`
-                            },
-                            noOptionsMessage: () => {
-                                return 'p-2'
-                            },
-                            placeholder: () => {
-                                return 'text-bg-300'
-                            },
-                            indicatorsContainer: () => {
-                                return 'cursor-pointer'
-                            },
-                            clearIndicator: () => {
-                                return 'border-r border-bg-300 pr-1'
-                            }
-                        }}
+                        classNames={reactSelectStyle}
                         onCreateOption={label => {
                             const newValue = { label: label, id: uuIdv4() }
                             setSelectedTags(prevTags => [...prevTags, newValue])
@@ -117,7 +81,7 @@ export default function NoteForm({
                     required
                     placeholder="Enter your body..."
                     rows={20}
-                    className="bg-transparent border border-bg-200 rounded-lg focus:outline-none p-2" />
+                    className="bg-transparent border border-bg-200 rounded-lg transition focus:outline-none focus:border-blue-500 p-2" />
             </div>
             <div className="flex justify-end space-x-2 mt-2">
                 <button className="bg-primary-100 rounded-md px-2">Save</button>

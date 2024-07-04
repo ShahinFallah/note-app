@@ -60,19 +60,37 @@ function App() {
     }))
   }
 
+  function onDeleteNote(id: string) {
+    setNotes(prevNotes => prevNotes.filter(note => note.id !== id))
+  }
+
   function addTag(tag: Tag) {
     setTags(prevTags => {
       return [...prevTags, tag]
     })
   }
 
+  function onDeleteTag(id: string) {
+    setTags(prevTags => prevTags.filter(tag => tag.id !== id))
+  }
+
+  function onEditTag(id: string, label: string) {
+    setTags(prevTags => prevTags.map(tag => {
+      if (tag.id === id) {
+        return {...tag, label: label}
+      } else {
+        return tag
+      }
+    }))
+  }
+
   return (
     <div className="m-4 max-w-5xl mx-auto p-5">
       <Routes>
-        <Route path="/" element={<NoteList notes={notesWithTags} availableTags={tags} />} />
+        <Route path="/" element={<NoteList notes={notesWithTags} availableTags={tags} onDeleteTag={onDeleteTag} onEditTag={onEditTag} />} />
         <Route path="/new" element={<NewNote onCreateNote={onCrateNote} onAddTag={addTag} availableTags={tags} />} />
         <Route path="/:id" element={<NoteLayout notes={notesWithTags} />}>
-          <Route index element={<Note />} />
+          <Route index element={<Note onDeleteNote={onDeleteNote} />} />
           <Route path='edit' element={<EditNote onEditNote={onEditNote} onAddTag={addTag} availableTags={tags} />} />
         </Route>
       </Routes>

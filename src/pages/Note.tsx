@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom"
 import { useNote } from "../components/NoteLayout"
 
-export default function Note() {
+type NoteProps = {
+  onDeleteNote: (id: string) => void
+}
+
+export default function Note({ onDeleteNote }: NoteProps) {
 
   const note = useNote()
 
@@ -11,9 +15,9 @@ export default function Note() {
         <h1 className="text-2xl">Note</h1>
         <div className="space-x-2">
           <Link to='edit'>
-          <button className="bg-primary-100 p-1 px-2 rounded-md hover:-translate-x-1 transition">Edit</button>
+            <button className="bg-primary-100 p-1 px-2 rounded-md hover:-translate-x-1 transition">Edit</button>
           </Link>
-          <button className="border border-red-900 text-red-100 p-1 px-1.5 rounded-md hover:rounded-md">Delete</button>
+          <button onClick={() => onDeleteNote(note.id)} className="border border-red-900 text-red-100 p-1 px-1.5 rounded-md hover:rounded-md">Delete</button>
           <button className="border border-bg-300 text-text-200 p-1 px-1.5 rounded-md hover:rounded-md">Back</button>
         </div>
       </div>
@@ -25,7 +29,7 @@ export default function Note() {
           ))}
         </div>
       </div>
-      <div className="text-text-200 border border-bg-300 p-2.5 rounded-2xl mt-4">{note.markdown}</div>
+      <div className="text-text-200 border border-bg-200 p-2.5 rounded-2xl mt-4">{note.markdown}</div>
     </div>
   )
 }
