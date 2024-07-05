@@ -47,7 +47,7 @@ function NoteList({ notes, availableTags, onDeleteTag, onEditTag }: NoteListProp
                             required
                             id="title"
                             type="text"
-                            className="bg-transparent border border-bg-200 rounded-lg p-1.5 px-4 focus:outline-none text-text-200 focus:border-blue-500 transition"
+                            className="bg-transparent w-full border border-bg-200 rounded-lg p-1.5 px-4 focus:outline-none text-text-200 focus:border-blue-500 transition"
                             placeholder="Enter your title..."
                             value={title}
                             onChange={e => setTitle(e.target.value)}
@@ -72,15 +72,15 @@ function NoteList({ notes, availableTags, onDeleteTag, onEditTag }: NoteListProp
                 </div>
                 {notes.length !== 0
                     ? (
-                <div className="grid grid-cols-2 gap-5">
-                    {filteredNotes.map(note => (
-                        <NoteCart
-                            key={note.id}
-                            title={note.title}
-                            tags={note.tags}
-                            id={note.id} />
-                    ))}
-                </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            {filteredNotes.map(note => (
+                                <NoteCart
+                                    key={note.id}
+                                    title={note.title}
+                                    tags={note.tags}
+                                    id={note.id} />
+                            ))}
+                        </div>
 
                     )
                     : (

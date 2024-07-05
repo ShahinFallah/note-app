@@ -17,6 +17,9 @@ export default {
         "bg-100":"#1E1E1E",
         "bg-200":"#2d2d2d",
         "bg-300":"#454545"
+      },
+      screens: {
+        'xs': '460px'
       }
     },
   },

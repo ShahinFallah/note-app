@@ -47,7 +47,7 @@ export default function NoteForm({
                         defaultValue={title}
                         id="title"
                         type="text"
-                        className="bg-transparent border border-bg-200 rounded-lg p-1.5 px-4 focus:outline-none text-text-200 focus:border-blue-500 transition"
+                        className="bg-transparent w-full border border-bg-200 rounded-lg p-1.5 px-4 focus:outline-none text-text-200 focus:border-blue-500 transition"
                         placeholder="Enter your title..." />
                 </div>
                 <div className="flex flex-col flex-1 gap-1">
@@ -81,7 +81,7 @@ export default function NoteForm({
                     required
                     placeholder="Enter your body..."
                     rows={20}
-                    className="bg-transparent border border-bg-200 rounded-lg transition focus:outline-none focus:border-blue-500 p-2" />
+                    className="bg-transparent border border-bg-200 rounded-lg transition focus:outline-none focus:border-blue-500 p-2 max-h-96 sm:max-h-none " />
             </div>
             <div className="flex justify-end space-x-2 mt-2">
                 <button className="bg-primary-100 rounded-md px-2">Save</button>

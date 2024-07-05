@@ -85,7 +85,7 @@ function App() {
   }
 
   return (
-    <div className="m-4 max-w-5xl mx-auto p-5">
+    <div className="m-4 max-w-5xl mx-auto p-2 sm:p-5">
       <Routes>
         <Route path="/" element={<NoteList notes={notesWithTags} availableTags={tags} onDeleteTag={onDeleteTag} onEditTag={onEditTag} />} />
         <Route path="/new" element={<NewNote onCreateNote={onCrateNote} onAddTag={addTag} availableTags={tags} />} />
