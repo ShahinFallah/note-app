@@ -1,4 +1,4 @@
-# Multistep Form Custom Hook With React/TypeScript
+# Note-app With React/TypeScript
 
 This is a Note App project built with React and TypeScript
 
